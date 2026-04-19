@@ -25,8 +25,12 @@ public class Scraper {
                     ExpectedConditions.visibilityOfElementLocated(tituloSelector)
             );
 
+
             String titulo = tituloElement.getText();
 
+            if (titulo.isEmpty()) {
+                throw new RuntimeException("Produto não encontrado");
+            }
 
             // Preço
             By precoSelector = By.cssSelector(".saleInCents-value");
